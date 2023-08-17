@@ -34,12 +34,27 @@ const global = {
     const API_KEY = "96f25120aeebb83ff745e00ce49a1c61";
     const API_URL = "https://api.themoviedb.org/3/";
   
+    showSpinner();
     const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
     const data = await response.json();
-  
+   
+    hideSpinner();
+
     return data;
   }
   
+   function showSpinner(){
+     const spinner = document.querySelector(".spinner");
+     spinner.classList.add("show");
+   }
+
+   function hideSpinner(){
+    const spinner = document.querySelector(".spinner");
+    spinner.classList.remove("show");
+  }
+
+
+
   // Highlight active link
   function highlightActiveLink() {
     const links = document.querySelectorAll(".nav-link");
